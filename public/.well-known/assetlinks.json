@@ -1,0 +1,13 @@
+[
+    {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.abdulmuqeetmunshi.tapconnect",
+        "sha256_cert_fingerprints": [
+          "B7:DD:4E:AC:50:83:52:CA:50:A8:6A:CC:41:BA:4F:17:DC:17:14:27:82:2D:A0:6F:9D:95:A3:EB:71:CB:8A:E8",
+          "09:45:34:E0:93:EC:00:07:B9:D7:4E:1E:5C:C2:5B:30:55:77:82:39:DC:06:FA:AF:1F:B7:F2:EA:83:3B:55:D0"
+        ]
+      }
+    }
+  ]
