@@ -46,32 +46,50 @@ const ProfileScreen = () => {
   if (error) {
     return <div>{error}</div>;
   }
-  // console.log(`url(https://app.tapconnect.in/${userData.background_image})`);
+  console.log(`https://app.tapconnect.in/${userData.background_image}`);
 
   // console.log(socialLinks[0].name)
 
-  const handleDownloadVCard = (name, number) => {
-    const vCardData = `BEGIN:VCARD
-      VERSION:3.0
-      FN:${name}
-      TEL;TYPE=CELL:${number}
-      END:VCARD`;
-  
-    // Create a Blob from the vCard data
-    const blob = new Blob([vCardData], { type: 'text/vcard' });
-  
-    // Create a download link
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'contact.vcf';
-  
-    // Append link to the body and trigger click
-    document.body.appendChild(link);
-    link.click();
-  
-    // Cleanup the link
-    document.body.removeChild(link);
+  const handleDownloadVCard = (name, number, mail) => {
+    var contact = {
+      name: name,
+      phone: number,
+      email: mail
+    };
+    // create a vcard file
+    var vcard = "BEGIN:VCARD\nVERSION:4.0\nFN:" + contact.name + "\nTEL;TYPE=work,voice:" + contact.phone + "\nEMAIL:" + contact.email + "\nEND:VCARD";
+    var blob = new Blob([vcard], { type: "text/vcard" });
+    var url = URL.createObjectURL(blob);
+    
+    const newLink = document.createElement('a');
+    newLink.download = contact.name + ".vcf";
+    newLink.textContent = contact.name;
+    newLink.href = url;
+    
+    newLink.click();
   };
+
+  // const handleDownloadVCard = (name, number) => {
+  //   const vCardData = `BEGIN:VCARD
+  //   VERSION:3.0
+  //   FN:${encodeURIComponent(name)}
+  //   TEL;TYPE=CELL:${encodeURIComponent(number)}
+  //   END:VCARD`;
+  
+  //   if (navigator.platform === 'iPhone') {
+  //     const url = `data:text/vcard;charset=utf-8,${encodeURIComponent(vCardData)}`;
+  //     window.open(url, '_self');
+  //   } else {
+  //     const blob = new Blob([vCardData], { type: 'text/vcard' });
+  //     const link = document.createElement('a');
+  //     link.href = URL.createObjectURL(blob);
+  //     link.download = 'contact.vcf';
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     URL.revokeObjectURL(link.href);
+  //     document.body.removeChild(link);
+  //   }
+  // };
   
 
   // const imageSource = labelToImage[link.label];
@@ -127,7 +145,7 @@ const ProfileScreen = () => {
             marginTop: 20,
             // fontFamily: 'robot-medium'
           }}
-          onClick={handleDownloadVCard(userData.name, userData.mobile)} // Call the function to download vCard
+          onClick={() => handleDownloadVCard(userData.name, userData.mobile, userData.email)} // Call the function to download vCard
         >
           + Connect
         </button>
