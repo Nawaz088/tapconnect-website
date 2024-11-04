@@ -124,7 +124,7 @@ const ProfileScreen = () => {
         </div>
 
       <div style={{ marginLeft: 20 }}>
-        <h1 style={{ margin: 0 }}>{userData.name}</h1>
+        <h1 style={{ margin: 0 }}>{userData.name} <img src={require('../assets/Images/verified.png')} style={{width: 20, height: 20}}/></h1>
         <p style={{ margin: 0 }}>
           {userData.designation} at {userData.company}
         </p>
@@ -156,7 +156,7 @@ const ProfileScreen = () => {
         <div style={{ width: '80%',marginTop: 20, borderRadius: 30, height: 500, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.5)', padding: 20}}>
         <div style={{
           display: 'grid',
-          gap: 35,
+          gap: 5,
           height: 'max-content',
           gridTemplateColumns: 'repeat(3, 1fr)', // 3 equal columns
           justifyItems: 'center',  // Center each grid item
@@ -172,7 +172,7 @@ const ProfileScreen = () => {
                 textDecoration: 'none',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '100%',  // Take full width of the column
+                width: '150%',  // Take full width of the column
               }}>
                 {/* <i className={`fab fa-${link.label.toLowerCase()} fa-4x`}
                   style={{
@@ -184,7 +184,7 @@ const ProfileScreen = () => {
                     color: '#fff'
                   }}
                 ></i> */}
-                <img src={labelToImage[link.label]} alt={link.label} width={70} height={70} />
+                <img src={labelToImage[link.label]} alt={link.label} width={80} height={80} />
                 <p style={{fontSize: 12, color: '#aaa'}}>
                   {link.label}
                 </p>
